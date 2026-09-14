@@ -22,12 +22,12 @@
         gap: 40px;
         justify-content: center;
         margin: 40px auto;
-        max-width: 1100px;
+        max-width: 1400px;
       }
 
       .sun {
         flex-shrink: 0;
-        width: 300px;
+        width: 380px;
       }
 
       .sun-image {
@@ -36,117 +36,122 @@
       }
 
       .planets {
-        align-content: center;
+        align-items: center;
         display: flex;
-        flex: 1;
         flex-wrap: nowrap;
-        gap: 4px;
-        justify-content: flex-start;
-        max-width: 800px;
-        overflow-x: auto;
-        padding: 10px 0;
+        gap: 12px;
+        min-width: 0;
       }
 
       .planet {
         align-items: center;
         display: flex;
+        flex: 0 0 auto;
         justify-content: center;
-      }
-
-      .planet a {
-        display: block;
+        flex-direction: column;
       }
 
       .planet-image {
-        display: block;
         object-fit: contain;
       }
 
       .mercury .planet-image {
-        height: 84px;
-        width: 84px;
+        height: 57px;
+        width: 57px;
       }
 
       .venus .planet-image {
-        height: 112px;
-        width: 112px;
+        height: 77px;
+        width: 77px;
       }
 
       .earth .planet-image {
-        height: 121px;
-        width: 121px;
+        height: 83px;
+        width: 83px;
       }
 
       .mars .planet-image {
-        height: 95px;
-        width: 95px;
+        height: 66px;
+        width: 66px;
       }
 
       .jupiter .planet-image {
-        height: 245px;
-        width: 245px;
+        height: 168px;
+        width: 168px;
       }
 
       .saturn .planet-image {
-        height: 216px;
-        width: 272px;
+        height: 172px;
+        width: 217px;
       }
 
       .uranus .planet-image,
       .neptune .planet-image {
-        height: 150px;
-        width: 150px;
+        height: 104px;
+        width: 104px;
       }
     </style>
   </head>
   <body>
     <h1>Our Solar System</h1>
     <p>The solar system is made up of the Sun and the objects that orbit it.</p>
+    <p>Click on a planet to explore it.</p>
 
     <h2>Planets</h2>
     <div class="solar-system">
       <div class="sun">
-        <img class="sun-image" src="images/sun.png" alt="The Sun" />
+        <p>The Sun</p>
+        <a href="pages/sun.html">
+          <img class="sun-image" src="images/sun.png" alt="The Sun" />
+        </a>
       </div>
 
       <div class="planets">
         <div class="planet mercury">
-          <a href="mercury.html">
+          <p>Mercury</p>
+          <a href="pages/planets/mercury.html">
             <img class="planet-image" src="images/mercury.png" alt="Mercury" />
           </a>
         </div>
         <div class="planet venus">
-          <a href="venus.html">
+          <p>Venus</p>
+          <a href="pages/planets/venus.html">
             <img class="planet-image" src="images/venus.png" alt="Venus" />
           </a>
         </div>
         <div class="planet earth">
-          <a href="earth.html">
+          <p>Earth</p>
+          <a href="pages/planets/earth.html">
             <img class="planet-image" src="images/earth.png" alt="Earth" />
           </a>
         </div>
         <div class="planet mars">
-          <a href="mars.html">
+          <p>Mars</p>
+          <a href="pages/planets/mars.html">
             <img class="planet-image" src="images/mars.png" alt="Mars" />
           </a>
         </div>
         <div class="planet jupiter">
-          <a href="jupiter.html">
+          <p>Jupiter</p>
+          <a href="pages/planets/jupiter.html">
             <img class="planet-image" src="images/jupiter.png" alt="Jupiter" />
           </a>
         </div>
         <div class="planet saturn">
-          <a href="saturn.html">
+          <p>Saturn</p>
+          <a href="pages/planets/saturn.html">
             <img class="planet-image" src="images/saturn.png" alt="Saturn" />
           </a>
         </div>
         <div class="planet uranus">
-          <a href="uranus.html">
+          <p>Uranus</p>
+          <a href="pages/planets/uranus.html">
             <img class="planet-image" src="images/uranus.png" alt="Uranus" />
           </a>
         </div>
         <div class="planet neptune">
-          <a href="neptune.html">
+          <p>Neptune</p>
+          <a href="pages/planets/neptune.html">
             <img class="planet-image" src="images/neptune.png" alt="Neptune" />
           </a>
         </div>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uranus | Solar System</title>
+    <style>
+      :root {
+        --accent: #8ce7df;
+        --dark: #092329;
+        --soft: #16525a;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background: linear-gradient(135deg, var(--dark), #061316);
+        color: #ecffff;
+        font-family: Arial, sans-serif;
+        margin: 0;
+      }
+      header,
+      .page-content {
+        margin: auto;
+        max-width: 1000px;
+        padding: 28px 24px;
+      }
+      header a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      .page-content {
+        align-items: center;
+        display: grid;
+        gap: 40px;
+        grid-template-columns: 0.8fr 1.2fr;
+        min-height: 80vh;
+      }
+      .planet-image {
+        max-width: 100%;
+      }
+      .eyebrow {
+        color: var(--accent);
+        font-size: 0.75rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      h1 {
+        font-size: clamp(3rem, 8vw, 6rem);
+        margin: 10px 0;
+      }
+      p {
+        color: #c4e9e8;
+        line-height: 1.7;
+      }
+      .stats {
+        background: var(--soft);
+        display: grid;
+        gap: 1px;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 28px;
+      }
+      .stat {
+        background: rgba(0, 0, 0, 0.2);
+        padding: 16px;
+      }
+      .stat span {
+        display: block;
+      }
+      .stat-label {
+        color: var(--accent);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+      }
+      .stat span {
+        margin-top: 6px;
+      }
+      @media (max-width: 700px) {
+        .page-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .planet-image {
+          max-height: 260px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="../../index.html">&larr; Back to the solar system</a>
+    </header>
+    <div class="page-content">
+      <img class="planet-image" src="../../images/uranus.png" alt="Uranus" />
+      <div class="page-text">
+        <span class="eyebrow">Ice giant / 07</span>
+        <h1>Uranus</h1>
+        <p>
+          Uranus is an ice giant with a blue-green color created by methane in
+          its upper atmosphere. Unlike most planets, it rotates almost on its
+          side, likely after a massive collision long ago.
+        </p>
+        <p>
+          Its faint rings and many moons travel around a world with some of the
+          coldest planetary temperatures measured in the solar system. Uranus
+          takes more than eighty Earth years to complete one orbit.
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-label">Diameter</span><span>50,724 km</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Distance from Sun</span
+            ><span>2.87 billion km</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Year length</span
+            ><span>84 Earth years</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Moons</span><span>28</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
