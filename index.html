@@ -16,6 +16,25 @@
         color: #ffd166;
       }
 
+      #fun-fact-button {
+        background-color: #ffd166;
+        border: 0;
+        border-radius: 4px;
+        color: #000000;
+        cursor: pointer;
+        font-size: 1rem;
+        padding: 10px 16px;
+      }
+
+      #fun-fact-button:hover {
+        background-color: #ffe29a;
+      }
+
+      #fun-fact {
+        color: #ffd166;
+        min-height: 24px;
+      }
+
       .solar-system {
         align-items: center;
         display: flex;
@@ -97,6 +116,9 @@
     <p>The solar system is made up of the Sun and the objects that orbit it.</p>
     <p>Click on a planet to explore it.</p>
 
+    <button id="fun-fact-button">Show a random fun fact</button>
+    <p id="fun-fact"></p>
+
     <h2>Planets</h2>
     <div class="solar-system">
       <div class="sun">
@@ -157,5 +179,24 @@
         </div>
       </div>
     </div>
+
+    <script>
+      const funFacts = [
+        "A day on Venus is longer than a year on Venus.",
+        "Jupiter is the largest planet in our solar system.",
+        "Saturn's rings are made mostly of ice and rock.",
+        "Mars has the largest volcano in the solar system.",
+        "Neptune has the fastest winds of any planet in the solar system.",
+      ];
+
+      function showRandomFunFact() {
+        const randomIndex = Math.floor(Math.random() * funFacts.length);
+        document.getElementById("fun-fact").textContent = funFacts[randomIndex];
+      }
+
+      document
+        .getElementById("fun-fact-button")
+        .addEventListener("click", showRandomFunFact);
+    </script>
   </body>
 </html>
