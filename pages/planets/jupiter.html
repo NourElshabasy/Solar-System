@@ -75,6 +75,50 @@
       .stat span {
         margin-top: 6px;
       }
+      .weight-calculator {
+        margin-top: 28px;
+      }
+      .weight-calculator label {
+        color: var(--accent);
+        display: block;
+        font-size: 0.75rem;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+      }
+      .weight-calculator input,
+      .weight-calculator button {
+        border: 0;
+        font: inherit;
+        padding: 10px 12px;
+      }
+      .weight-calculator input {
+        max-width: 150px;
+        width: 100%;
+      }
+      .weight-calculator button {
+        background: var(--accent);
+        color: var(--dark);
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .weight-results {
+        display: grid;
+        gap: 8px;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 16px;
+      }
+      .weight-result {
+        background: rgba(0, 0, 0, 0.2);
+        padding: 10px;
+      }
+      .weight-result span {
+        display: block;
+      }
+      .weight-result .planet-name {
+        color: var(--accent);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+      }
       @media (max-width: 700px) {
         .page-content {
           grid-template-columns: 1fr;
@@ -121,7 +165,54 @@
             <span class="stat-label">Moons</span><span>95</span>
           </div>
         </div>
+        <div class="weight-calculator">
+          <label for="weight-input">Enter your weight</label>
+          <input
+            id="weight-input"
+            type="number"
+            min="0"
+            step="0.1"
+            placeholder="e.g. 70"
+          />
+          <select id="weight-unit" aria-label="Weight unit">
+            <option value="kg">Kilograms (kg)</option>
+            <option value="lb">Pounds (lb)</option>
+          </select>
+          <button id="calculate-weight" type="button">Calculate</button>
+          <div
+            id="weight-results"
+            class="weight-results"
+            aria-live="polite"
+          ></div>
+        </div>
       </div>
     </div>
+    <script>
+      const planetGravity = 24.79;
+      const planetName = document.querySelector("h1").textContent;
+
+      function calculateWeightOnPlanet() {
+        const enteredWeight = Number(
+          document.getElementById("weight-input").value,
+        );
+        const unit = document.getElementById("weight-unit").value;
+        const results = document.getElementById("weight-results");
+
+        if (!enteredWeight || enteredWeight < 0) {
+          results.textContent = "Enter a valid weight to see the results.";
+          return;
+        }
+
+        const weightInKg =
+          unit === "lb" ? enteredWeight / 2.20462 : enteredWeight;
+        const weightOnPlanet = (weightInKg * planetGravity) / 9.81;
+        const weightInLb = weightOnPlanet * 2.20462;
+        results.innerHTML = `<div class="weight-result"><span class="planet-name">${planetName}</span><span>${weightOnPlanet.toFixed(1)} kg / ${weightInLb.toFixed(1)} lb</span></div>`;
+      }
+
+      document
+        .getElementById("calculate-weight")
+        .addEventListener("click", calculateWeightOnPlanet);
+    </script>
   </body>
 </html>
