@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moon | Solar System</title>
+    <style>
+      :root {
+        --accent: #d7d4c9;
+        --dark: #15171d;
+        --soft: #3b3d45;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background: linear-gradient(135deg, var(--dark), #08090d);
+        color: #f5f4ef;
+        font-family: Arial, sans-serif;
+        margin: 0;
+      }
+      header,
+      .page-content {
+        margin: auto;
+        max-width: 1000px;
+        padding: 28px 24px;
+      }
+      header a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      .page-content {
+        align-items: center;
+        display: grid;
+        gap: 40px;
+        grid-template-columns: 0.8fr 1.2fr;
+        min-height: 80vh;
+      }
+      .planet-image {
+        max-width: 100%;
+        animation: pulse 3s ease-in-out infinite;
+      }
+
+      /*  continuous pulse  */
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+      .eyebrow {
+        color: var(--accent);
+        font-size: 0.75rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      h1 {
+        font-size: clamp(3rem, 8vw, 6rem);
+        margin: 10px 0;
+      }
+      p {
+        color: #d8d7d1;
+        line-height: 1.7;
+      }
+      .stats {
+        background: var(--soft);
+        display: grid;
+        gap: 1px;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 28px;
+      }
+      .stat {
+        background: rgba(0, 0, 0, 0.2);
+        padding: 16px;
+      }
+      .stat span {
+        display: block;
+        margin-top: 6px;
+      }
+      .stat-label {
+        color: var(--accent);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+      }
+      .weight-calculator {
+        margin-top: 28px;
+      }
+      .weight-calculator label {
+        color: var(--accent);
+        display: block;
+        font-size: 0.75rem;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+      }
+      .weight-calculator input,
+      .weight-calculator button {
+        border: 0;
+        font: inherit;
+        padding: 10px 12px;
+      }
+      .weight-calculator input {
+        max-width: 150px;
+        width: 100%;
+      }
+      .weight-calculator button {
+        background: var(--accent);
+        color: var(--dark);
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .weight-results {
+        display: grid;
+        gap: 8px;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 16px;
+      }
+      .weight-result {
+        background: rgba(0, 0, 0, 0.2);
+        padding: 10px;
+      }
+      .weight-result span {
+        display: block;
+      }
+      .weight-result .planet-name {
+        color: var(--accent);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="../../index.html">&larr; Back to the solar system</a>
+    </header>
+    <div class="page-content">
+      <img class="planet-image" src="../../images/moon.png" alt="The Moon" />
+      <div class="page-text">
+        <span class="eyebrow">Natural satellite / 01</span>
+        <h1>Moon</h1>
+        <p>
+          The Moon is Earth's natural satellite and the fifth-largest moon in
+          the solar system. Its surface is covered with craters, mountains, and
+          broad plains formed by ancient volcanic activity.
+        </p>
+        <p>
+          The Moon has no substantial atmosphere or liquid water on its surface.
+          Its gravity drives Earth's ocean tides, and its phases change as it
+          travels around Earth.
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-label">Diameter</span><span>3,475 km</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Distance from Earth</span
+            ><span>384,400 km</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Orbital period</span><span>27.3 days</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Gravity</span><span>1.62 m/s²</span>
+          </div>
+        </div>
+        <div class="weight-calculator">
+          <label for="weight-input">Enter your weight</label>
+          <input
+            id="weight-input"
+            type="number"
+            min="0"
+            step="0.1"
+            placeholder="e.g. 70"
+          />
+          <select id="weight-unit" aria-label="Weight unit">
+            <option value="kg">Kilograms (kg)</option>
+            <option value="lb">Pounds (lb)</option>
+          </select>
+          <button id="calculate-weight" type="button">Calculate</button>
+          <div
+            id="weight-results"
+            class="weight-results"
+            aria-live="polite"
+          ></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const planetGravity = 1.62;
+      const planetName = document.querySelector("h1").textContent;
+
+      function calculateWeightOnPlanet() {
+        const enteredWeight = Number(
+          document.getElementById("weight-input").value,
+        );
+        const unit = document.getElementById("weight-unit").value;
+        const results = document.getElementById("weight-results");
+
+        if (!enteredWeight || enteredWeight < 0) {
+          results.textContent = "Enter a valid weight to see the results.";
+          return;
+        }
+
+        const weightInKg =
+          unit === "lb" ? enteredWeight / 2.20462 : enteredWeight;
+        const weightOnPlanet = (weightInKg * planetGravity) / 9.81;
+        const weightInLb = weightOnPlanet * 2.20462;
+        results.innerHTML = `<div class="weight-result"><span class="planet-name">${planetName}</span><span>${weightOnPlanet.toFixed(1)} kg / ${weightInLb.toFixed(1)} lb</span></div>`;
+      }
+
+      document
+        .getElementById("calculate-weight")
+        .addEventListener("click", calculateWeightOnPlanet);
+    </script>
+  </body>
+</html>

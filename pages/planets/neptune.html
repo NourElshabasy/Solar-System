@@ -38,6 +38,18 @@
       }
       .planet-image {
         max-width: 100%;
+        animation: pulse 3s ease-in-out infinite;
+      }
+
+      /*  continuous pulse  */
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
       }
       .eyebrow {
         color: var(--accent);
