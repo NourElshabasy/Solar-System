@@ -20,3 +20,41 @@
   color: #ffd166;
   text-decoration: underline;
 }
+
+.gallery {
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 0 24px 48px;
+}
+
+.gallery h2 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin: 0 0 16px;
+}
+
+.gallery-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.gallery div {
+  background: rgba(0, 0, 0, 0.25);
+  margin: 0;
+  padding: 8px;
+}
+
+.gallery img {
+  aspect-ratio: 4 / 3;
+  background: rgba(255, 255, 255, 0.08);
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+
+.gallery p {
+  color: #d7d7d7;
+  font-size: 0.85rem;
+  padding: 10px 4px 4px;
+}
